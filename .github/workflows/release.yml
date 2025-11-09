@@ -1,0 +1,46 @@
+﻿name: Package and Release ProgramaOT
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0
+
+      - name: Create ZIP of ProgramaOT folder
+        shell: pwsh
+        run: |
+          if (Test-Path client-to-update.zip) { Remove-Item client-to-update.zip -Force }
+          Compress-Archive -Path ProgramaOT\* -DestinationPath client-to-update.zip -Force
+
+      - name: Compute unique release tag
+        id: ver
+        shell: pwsh
+        run: |
+          $timestamp = Get-Date -Format "yyyy.MM.dd-HH.mm.ss"
+          $tag = "v$timestamp"
+          Write-Host "Computed tag: $tag"
+          echo "tag=$tag" >> $env:GITHUB_OUTPUT
+          echo "name=Client $tag" >> $env:GITHUB_OUTPUT
+
+      - name: Create new Release and upload asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: client-to-update.zip
+          name: ${{ steps.ver.outputs.name }}
+          tag_name: ${{ steps.ver.outputs.tag }}
+          draft: false
+          prerelease: false
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

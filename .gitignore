@@ -1,0 +1,20 @@
+# ProgramaOT-Cliente — arquivos e pastas a serem ignorados
+
+# Dados locais gerados pelo cliente em tempo de execução
+ProgramaOT/cache/
+ProgramaOT/characterdata/
+ProgramaOT/minimap/
+ProgramaOT/log/
+ProgramaOT/crashdump/
+ProgramaOT/default/
+
+# Capturas de tela e arquivos temporários
+ProgramaOT/screenshots/
+
+# Arquivos auxiliares/temporários do projeto
+partial.package.json.version
+
+# Arquivos do sistema
+Thumbs.db
+desktop.ini
+.DS_Store
