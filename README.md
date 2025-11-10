@@ -2,12 +2,12 @@
 
 Este repositório contém o cliente oficial de acesso ao nosso servidor de Tibia Programa OT. Ele inclui o executável, bibliotecas necessárias (Qt 6), recursos e arquivos auxiliares para rodar o cliente de forma imediata no Windows.
 
-Além do uso direto, este repositório é a fonte utilizada pelo nosso Canary Launcher para baixar e atualizar automaticamente o cliente por meio das Releases do GitHub.
+Além do uso direto, este repositório é a fonte utilizada pelo nosso ProgramaOT-Launcher para baixar e atualizar automaticamente o cliente por meio das Releases do GitHub.
 
 ## Como obter e executar
 
 Opção recomendada (automática):
-- Use o Canary Launcher do Programa OT. Ele detecta a versão mais recente publicada nas Releases deste repositório, baixa o pacote do cliente e oferece um único botão que alterna entre "Download", "Update" e "Play".
+- Use o ProgramaOT-Launcher. Ele detecta a versão mais recente publicada nas Releases deste repositório, baixa o pacote do cliente e oferece um único botão que alterna entre "Download", "Update" e "Play".
 
 Opção manual:
 1. Acesse a aba Releases deste repositório.
@@ -28,11 +28,23 @@ Observações:
 - `ProgramaOT/minimap/`, `ProgramaOT/characterdata/`, `ProgramaOT/cache/`, `ProgramaOT/log/`: dados locais gerados pelo uso.
 - `ProgramaOT/3rdpartylicences/`: textos das licenças de terceiros.
 
-## Releases e integração com o Launcher
+## Releases e integração com o ProgramaOT-Launcher
 
-- Publicamos versões do cliente via Releases do GitHub. O Canary Launcher usa o `tag_name` da Release para identificar se há atualização.
-- O pacote do cliente é disponibilizado como artefato (ex.: `client-to-update.zip`), contendo o diretório `ProgramaOT/` pronto para ser usado.
+- Publicamos versões do cliente via Releases do GitHub. O ProgramaOT-Launcher utiliza as informações configuradas no `launcher_config.json` para descobrir a versão e baixar o pacote correspondente.
+- O pacote do cliente deve ser disponibilizado como artefato (ex.: `client-to-update.zip`), contendo o diretório `ProgramaOT/` pronto para ser usado.
 - Veja também: `README-WORKFLOW.md` e `README-WORKFLOW-SHORT.md` para detalhes do processo de release.
+
+### Como preparar uma Release para o Launcher
+
+1. Gere/atualize os binários do cliente em `ProgramaOT/bin/` (inclua todas as DLLs necessárias, `client.exe`, `qt.conf`, traduções `.qm` e recursos `.rcc`).
+2. Atualize os catálogos e arquivos de mídia conforme necessário em `ProgramaOT/assets/`, `ProgramaOT/sounds/`, `ProgramaOT/storeimages/`.
+3. Se utilizar arquivos de verificação como `assets.json` e `assets.json.sha256`, atualize-os quando houver mudanças nos recursos.
+4. Empacote o diretório `ProgramaOT/` inteiro em um arquivo `.zip` (ex.: `client-to-update.zip`).
+5. Publique uma Release no GitHub e anexe o `.zip` gerado como artefato.
+6. Ajuste o `launcher_config.json` no repositório do ProgramaOT-Launcher para apontar para a Release/artefato e (se aplicável) para a fonte de versão. Use os campos definidos no `launcher_config.json` do launcher (ex.: URLs de pacote e versão conforme schema lá documentado).
+
+Observação:
+- Por padrão, o ProgramaOT-Launcher é instalado no diretório de dados do usuário (`%AppData%\\ProgramaOT`) pelo instalador (InstallSimple PRO). O local de download/instalação do cliente pode seguir o padrão do launcher ou ser ajustado via configuração no `launcher_config.json` (conforme o schema definido no projeto do launcher).
 
 ## Suporte e comunidade
 
