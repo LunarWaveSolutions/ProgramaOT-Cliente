@@ -68,14 +68,6 @@
                     "mappings": [
                         {
                             "actionBar": 1,
-                            "actionButton": 9,
-                            "actionsetting": {
-                                "chatText": "/m rotworm,8",
-                                "sendAutomatically": true
-                            }
-                        },
-                        {
-                            "actionBar": 1,
                             "actionButton": 1,
                             "actionsetting": {
                                 "chatText": "exura ico",
@@ -84,10 +76,10 @@
                         },
                         {
                             "actionBar": 1,
-                            "actionButton": 10,
+                            "actionButton": 9,
                             "actionsetting": {
-                                "useObject": 3003,
-                                "useType": "SelectUseTarget"
+                                "chatText": "/m rotworm,8",
+                                "sendAutomatically": true
                             }
                         },
                         {
@@ -96,6 +88,14 @@
                             "actionsetting": {
                                 "useObject": 268,
                                 "useType": "UseOnYourself"
+                            }
+                        },
+                        {
+                            "actionBar": 1,
+                            "actionButton": 10,
+                            "actionsetting": {
+                                "useObject": 3003,
+                                "useType": "SelectUseTarget"
                             }
                         },
                         {
@@ -116,20 +116,20 @@
                         },
                         {
                             "actionBar": 1,
+                            "actionButton": 5,
+                            "actionsetting": {
+                                "chatText": "exori infir nia",
+                                "sendAutomatically": true
+                            }
+                        },
+                        {
+                            "actionBar": 1,
                             "actionButton": 13,
                             "actionsetting": {
                                 "upgradeTier": 0,
                                 "useEquipSmartMode": false,
                                 "useObject": 7451,
                                 "useType": "Equip"
-                            }
-                        },
-                        {
-                            "actionBar": 1,
-                            "actionButton": 5,
-                            "actionsetting": {
-                                "chatText": "exori infir nia",
-                                "sendAutomatically": true
                             }
                         },
                         {
